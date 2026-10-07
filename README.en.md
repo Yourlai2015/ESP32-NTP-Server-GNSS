@@ -228,6 +228,34 @@ Debug tip: set `DEBUG_ENABLED` to `1` for more verbose logs (a small overhead un
 
 ---
 
+## Project structure
+
+```
+ESP32S3-NTP-Server-GNSS/
+├── main/                      # Application code (ESP-IDF main component)
+│   ├── app_main.c             # Entry point: initializes and wires up modules
+│   ├── CMakeLists.txt         # Component build script (sources & deps)
+│   ├── idf_component.yml      # Component dependency manifest
+│   ├── include/
+│   │   └── app_config.h       # All configuration options live here
+│   ├── core/                  # Time conversion, sync state, restart
+│   ├── gnss/                  # NMEA parsing, UART, PPS capture & discipline
+│   ├── net/                   # WiFi link, web provisioning, credential storage
+│   ├── ntp/                   # NTP server, packet cache, auth, startup health check
+│   └── oled/                  # SSD1306 display driver and font
+├── docs/images/               # Preview image and other documentation assets
+├── CMakeLists.txt             # Project-level build script
+├── partitions.csv             # Partition table
+├── sdkconfig.defaults         # Default build configuration
+├── LICENSE                    # Project license (Apache-2.0)
+├── LICENSES/MIT.txt           # Upstream MIT license text
+├── NOTICE                     # Third-party attributions
+├── README.md                  # Chinese README
+└── README.en.md               # English README (this file)
+```
+
+---
+
 ## License & credits
 
 - This project is released under the **Apache License 2.0** — see [LICENSE](LICENSE).
