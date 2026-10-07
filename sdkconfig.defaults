@@ -1,0 +1,31 @@
+# ESP32-S3 NTP Time Server (C port) - default project configuration
+
+# Target chip
+CONFIG_IDF_TARGET="esp32s3"
+
+# Flash / partition layout
+CONFIG_ESPTOOLPY_FLASHSIZE_8MB=y
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# Networking: WiFi station with IPv6 support (NTP serves IPv4 and IPv6 clients)
+CONFIG_ESP_WIFI_ENABLED=y
+CONFIG_LWIP_IPV6=y
+CONFIG_LWIP_IPV6_AUTOCONFIG=y
+
+# A 1000 Hz tick keeps millisecond-based timing conversions simple and precise
+CONFIG_FREERTOS_HZ=1000
+
+# The NTP server and GNSS sync tasks need a little more than the default timer stack
+CONFIG_ESP_TIMER_TASK_STACK_SIZE=4096
+
+# app_main performs the bring-up sequence (WiFi, GNSS, NTP); give it some headroom
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
+
+# Keep the ESP32-S3's high resolution timer available to the NTP / PPS paths
+CONFIG_ESP_TIMER_SUPPORTS_ISR_DISPATCH_METHOD=y
+
+# The WiFi setup page is opened from phones, whose request headers (user agent,
+# cookies, ...) are far larger than the 512 byte default and would otherwise be
+# rejected with "431 Request Header Fields Too Large".
+CONFIG_HTTPD_MAX_REQ_HDR_LEN=4096

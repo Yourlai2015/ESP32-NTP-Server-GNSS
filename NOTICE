@@ -1,0 +1,12 @@
+ESP32-S3 GNSS 授时服务器（Stratum 1 NTP Server）
+Copyright 2026 yourlai
+https://yourlai.com
+
+本项目整体以 Apache License 2.0 发布（详见 LICENSE）。
+
+本作品包含的第三方组件及其归属如下：
+
+1. roblatour / ESP32TimeServer
+   https://github.com/roblatour/ESP32TimeServer
+   本项目为其 C 语言移植版本，部分代码移植自该项目。
+   版权 (c) 2026 Rob Latour，遵循 MIT 许可（全文见 LICENSES/MIT.txt）。

@@ -1,0 +1,45 @@
+# ESP32-S3 NTP 时间服务器主组件
+
+idf_component_register(
+    SRCS
+        "app_main.c"
+        "core/ntp_time.c"
+        "core/sync_state.c"
+        "core/time_state.c"
+        "core/restart.c"
+        "gnss/gnss_uart.c"
+        "gnss/gnss_nvs.c"
+        "gnss/pps.c"
+        "gnss/gnss_sync.c"
+        "net/wifi_link.c"
+        "net/wifi_config.c"
+        "net/wifi_provision.c"
+        "oled/oled.c"
+        "ntp/ntp_cache.c"
+        "ntp/ntp_auth.c"
+        "ntp/ntp_server.c"
+        "ntp/ntp_health.c"
+    INCLUDE_DIRS
+        "."
+        "include"
+        "core"
+        "gnss"
+        "net"
+        "oled"
+        "ntp"
+    REQUIRES
+        esp_wifi
+        esp_event
+        esp_netif
+        esp_timer
+        esp_hw_support
+        esp_http_server
+        nvs_flash
+        driver
+        esp_driver_gpio
+        esp_driver_i2c
+        esp_driver_mcpwm
+        esp_driver_uart
+        lwip
+        mbedtls
+)
